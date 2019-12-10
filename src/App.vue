@@ -24,6 +24,7 @@ import InfoUser from './components/InfoUser.vue';
     InfoUser,
   },
 })
+
 export default class App extends Vue {
   public user: object = {name: '', company: '', position: '', department: '', active: false};
   private users: any[] = [
@@ -46,12 +47,12 @@ export default class App extends Vue {
   private avatars: any[] = [1, 2, 3];
   private avatar: number = 0;
 
-  protected selected(data: object) {
+  protected selected(data: object): void {
     this.user = data;
     this.randAvatar(this.avatars);
   }
 
-  private randAvatar(arr: any[]) {
+  private randAvatar(arr: any[]): void {
     const rand = Math.floor(Math.random() * arr.length);
     this.avatar = arr[rand];
   }

@@ -31,7 +31,7 @@ export default class ListUsers extends Vue {
 
   private selectedKey = 0;
 
-  protected getUser(id: number) {
+  protected getUser(id: number): void {
     this.selectedKey = id;
     this.$emit('selectUser', this.users[this.selectedKey]);
   }

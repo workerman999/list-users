@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-2">
           <div class="avatar" :style="{backgroundImage:`url(${require(`../assets/avatars/${avatar}.png`)})`}"></div>
-          <span :class="{online: checkOnline, offline: checkOffline}">&#9899;</span>
+          <span :class="{online: checkOnline, offline: checkOffline}"><i class="fas fa-circle"></i></span>
         </div>
         <div class="col-10">
           <div class="content ml-3">
@@ -41,9 +41,18 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
+interface IPerson {
+    id: number;
+    name: string;
+    company: string;
+    position: string;
+    department: string;
+    active: boolean;
+}
+
 @Component
 export default class InfoUser extends Vue {
-  @Prop(Object) public readonly user!: object;
+  @Prop({ type: Object, required: true }) public readonly user!: IPerson;
   @Prop(Number) public readonly avatar!: number;
 
   get userPosition() {
